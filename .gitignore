@@ -1,0 +1,30 @@
+# Python / pip
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Environment secrets — NEVER commit these
+.env
+
+# Test / coverage artefacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+
+# Parquet / data files
+*.parquet
+*.csv
+*.json
+*.xml
+
+# Docker volumes
+postgres_data/
