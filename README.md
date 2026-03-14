@@ -154,11 +154,11 @@ See [`.env.example`](.env.example) for the full template.
 
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
-| `format` | string | ✅ | `csv` / `json` / `xml` / `parquet` |
-| `columns` | array | ✅ | At least one mapping required |
-| `columns[].source` | string | ✅ | DB column name |
-| `columns[].target` | string | ✅ | Name in export file |
-| `compression` | string | ❌ | `gzip` only; not for `parquet` |
+| `format` | string |  | `csv` / `json` / `xml` / `parquet` |
+| `columns` | array |  | At least one mapping required |
+| `columns[].source` | string |  | DB column name |
+| `columns[].target` | string |  | Name in export file |
+| `compression` | string |  | `gzip` only; not for `parquet` |
 
 **Response `201 Created`:**
 
@@ -205,7 +205,7 @@ curl http://localhost:8080/exports/benchmark
 }
 ```
 
-> ⚠ This endpoint may take **10–20 minutes** on first run. Do not call it frequently in production.
+>  This endpoint may take **10–20 minutes** on first run. Do not call it frequently in production.
 
 ---
 

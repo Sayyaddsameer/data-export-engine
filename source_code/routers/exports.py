@@ -81,7 +81,7 @@ async def benchmark() -> BenchmarkResponse:
     Exports the full 10 million row dataset in all four formats sequentially,
     measuring duration, file size, and peak memory for each.
 
-    ⚠ This endpoint may take several minutes on the first run.
+     This endpoint may take several minutes on the first run.
     """
     # Use all table columns for the benchmark
     all_columns: List[ColumnMapping] = [
