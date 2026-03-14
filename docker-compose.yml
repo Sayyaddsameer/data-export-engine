@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=8080
+      - DB_POOL_MIN_SIZE=${DB_POOL_MIN_SIZE:-2}
+      - DB_POOL_MAX_SIZE=${DB_POOL_MAX_SIZE:-10}
+      - DB_CHUNK_SIZE=${DB_CHUNK_SIZE:-1000}
+      - PARQUET_ROW_GROUP_SIZE=${PARQUET_ROW_GROUP_SIZE:-50000}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    # Hard memory limit to enforce efficient streaming
+    mem_limit: 256m
+    restart: unless-stopped
+    networks:
+      - export_net
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_DB=${POSTGRES_DB:-exports_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./seeds/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-user} -d ${POSTGRES_DB:-exports_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - export_net
+
+volumes:
+  postgres_data:
+
+networks:
+  export_net:
+    driver: bridge
