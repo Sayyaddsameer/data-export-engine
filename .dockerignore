@@ -1,0 +1,37 @@
+# Files and directories to exclude from the Docker build context
+# (speeds up docker build and avoids sending large files to the daemon)
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test artefacts and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.DS_Store
+Thumbs.db
+
+# Never send secrets to the daemon
+.env
+
+# Git history
+.git/
+.gitignore
+
+# Data files (not needed inside the image)
+*.parquet
+*.csv
+*.json
+*.xml
