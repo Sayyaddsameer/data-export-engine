@@ -1,0 +1,17 @@
+# .gitattributes
+# Force Unix (LF) line endings for shell scripts — critical for Docker/Linux
+seeds/init-db.sh    text eol=lf
+
+# All other text files: normalize on checkout
+*.py    text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.txt   text eol=lf
+*.ini   text eol=lf
+*.env   text eol=lf
+*.sh    text eol=lf
+
+# Binary files: no line-ending conversion
+*.parquet binary
+*.pyc     binary
