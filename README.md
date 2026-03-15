@@ -2,6 +2,13 @@
 
 A high-performance, memory-efficient data export API built with **Python / FastAPI** that streams a 10-million-row PostgreSQL dataset into **CSV, JSON, XML, and Parquet** — all within a hard **256 MB** container memory limit.
 
+## Project Demo
+
+Full architecture walkthrough and live API demonstration.
+
+**Watch the demo:**  
+[![Watch the Demo](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/1ZWgjHVR5cjWGnXSQwGf6_SEEhVpEDQox/view?usp=sharing)
+
 ---
 
 ## Table of Contents
