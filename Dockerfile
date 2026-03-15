@@ -44,4 +44,4 @@ EXPOSE 8080
 
 # Exec-form CMD: uvicorn receives SIGTERM directly (graceful shutdown).
 # PORT and LOG_LEVEL defaults are set here; docker-compose overrides via env.
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080} --workers 1 --log-level ${LOG_LEVEL:-info}"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080} --workers 1 --log-level $(echo ${LOG_LEVEL:-info} | tr '[:upper:]' '[:lower:]')"]
